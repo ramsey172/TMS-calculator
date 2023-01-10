@@ -1,13 +1,9 @@
-import Printers.Printer;
-import Printers.SystemOutPrinter;
-import Tools.Calculator;
-
+/**
+ * @author Simon Pirko on ${DATE}
+ */
 public class Main {
-    public static void main(String[] args) {
-
-        Printer printer = new SystemOutPrinter();
-        Calculator calculator = new Calculator(printer);
-        calculator.run();
-
-    }
+	public static void main(String[] args) {
+		Application app = new ConsoleApplication();
+		app.run();
+	}
 }
