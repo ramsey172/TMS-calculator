@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class FileHistoryStorage {
+public class FileHistoryStorage implements HistoryStorage{
     private final String filePath;
     private final FileWriter fileWriter;
     private final BufferedReader bufferedReader;

@@ -3,7 +3,7 @@ public class ConsoleApplication implements Application {
 	private final Reader reader = new ConsolerReader();
 	private final Writer writer = new ConsoleWriter();
 	private final Calculator calculator = new Calculator();
-	private final FileHistoryStorage fileHistoryStorage = new FileHistoryStorage("history.txt", writer);
+	private final HistoryStorage fileHistoryStorage = new CollectionHistoryStorage();
 
 	@Override
 	public void run() {
