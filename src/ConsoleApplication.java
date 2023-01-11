@@ -1,11 +1,11 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class ConsoleApplication implements Application {
 
 	private final Reader reader = new ConsolerReader();
 	private final Writer writer = new ConsoleWriter();
 	private final Calculator calculator = new Calculator();
-	private final HistoryStorage fileHistoryStorage = new CollectionHistoryStorage(new LinkedList<>());
+	private final HistoryStorage historyStorage = new CollectionHistoryStorage(new ArrayList<>());
 
 	@Override
 	public void run() {
@@ -19,7 +19,7 @@ public class ConsoleApplication implements Application {
 			String type = reader.readString();
 			Operation operation = new Operation(num1, num2, type);
 			Operation result = calculator.calculate(operation);
-			fileHistoryStorage.save(result.toString());
+			historyStorage.save(result.toString());
 			writer.write("Result " + result);
 			checkHistoryDialog();
 			writer.write("Do you want to continue? (y/n)");
@@ -35,7 +35,7 @@ public class ConsoleApplication implements Application {
 		writer.write("Do you want to watch the history of operations? (y/n)");
 		String answer = reader.readString();
 		if(answer.equals("y")){
-			fileHistoryStorage.show();
+			historyStorage.show();
 		}
 	}
 }

@@ -1,10 +1,8 @@
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class CollectionHistoryStorage implements HistoryStorage{
     private final Writer writer;
-    private Collection<String> history;
+    private final Collection<String> history;
 
     public CollectionHistoryStorage(Collection<String> collection){
         history = collection;
