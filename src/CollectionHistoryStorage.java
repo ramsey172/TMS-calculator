@@ -16,9 +16,8 @@ public class CollectionHistoryStorage implements HistoryStorage{
     }
 
     public void show(){
-        String operationAsString;
-        while((operationAsString = history.poll()) != null){
-            writer.write(operationAsString);
+        for (String string: history) {
+            System.out.println(string);
         }
     }
 }
