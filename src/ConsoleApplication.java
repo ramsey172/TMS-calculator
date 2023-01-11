@@ -1,9 +1,11 @@
+import java.util.LinkedList;
+
 public class ConsoleApplication implements Application {
 
 	private final Reader reader = new ConsolerReader();
 	private final Writer writer = new ConsoleWriter();
 	private final Calculator calculator = new Calculator();
-	private final HistoryStorage fileHistoryStorage = new CollectionHistoryStorage();
+	private final HistoryStorage fileHistoryStorage = new CollectionHistoryStorage(new LinkedList<>());
 
 	@Override
 	public void run() {
