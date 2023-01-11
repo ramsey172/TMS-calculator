@@ -17,7 +17,7 @@ public class CollectionHistoryStorage implements HistoryStorage{
 
     public void show(){
         for (String string: history) {
-            System.out.println(string);
+            writer.write(string);
         }
     }
 }
