@@ -5,7 +5,7 @@ public class CollectionHistoryStorage implements HistoryStorage{
     private final Writer writer;
     private Queue<String> history = new LinkedList<>();
 
-    CollectionHistoryStorage(){
+    public CollectionHistoryStorage(){
         this.writer = new ConsoleWriter();
     }
     public CollectionHistoryStorage(Writer writer){
