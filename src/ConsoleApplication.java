@@ -1,11 +1,10 @@
-import java.util.ArrayList;
-
 public class ConsoleApplication implements Application {
 
 	private final Reader reader = new ConsolerReader();
 	private final Writer writer = new ConsoleWriter();
 	private final Calculator calculator = new Calculator();
-	private final HistoryStorage historyStorage = new CollectionHistoryStorage(new ArrayList<>());
+	//private final OperationStorage operationStorage = new InMemoryOperationStorage();
+	private final OperationStorage operationStorage = new FileOperationStorage("history.txt");
 
 	@Override
 	public void run() {
@@ -19,9 +18,9 @@ public class ConsoleApplication implements Application {
 			String type = reader.readString();
 			Operation operation = new Operation(num1, num2, type);
 			Operation result = calculator.calculate(operation);
-			historyStorage.save(result.toString());
+			operationStorage.save(result);
 			writer.write("Result " + result);
-			checkHistoryDialog();
+			operationStorageDialog();
 			writer.write("Do you want to continue? (y/n)");
 			String answer = reader.readString();
 			if(answer.equals("n")){
@@ -31,11 +30,38 @@ public class ConsoleApplication implements Application {
 		}
 	}
 
-	private void checkHistoryDialog(){
-		writer.write("Do you want to watch the history of operations? (y/n)");
-		String answer = reader.readString();
+	private void operationStorageDialog(){
+		String answer;
+
+		writer.write("Do you want to watch all calculated operations? (y/n)");
+		answer = reader.readString();
 		if(answer.equals("y")){
-			historyStorage.show();
+			for(Operation operation : operationStorage.findAll()){
+				writer.write(operation.toString());
+			}
 		}
+
+		writer.write("Do you want to find operation by id? (y/n)");
+		answer = reader.readString();
+		if(answer.equals("y")){
+			writer.write("Enter ID:");
+			int operationId = reader.readInt();
+			Operation operation = operationStorage.findById(operationId);
+			if(operation != null){
+				writer.write(operation.toString());
+			}else{
+				writer.write("Operation is not found");
+			}
+		}
+
+		writer.write("Do you want to remove operation by id");
+		answer = reader.readString();
+		if(answer.equals("y")){
+			writer.write("Enter ID:");
+			int operationId = reader.readInt();
+			operationStorage.remove(operationId);
+		}
+
+
 	}
 }

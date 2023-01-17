@@ -5,7 +5,7 @@ import java.util.Scanner;
  */
 public class ConsolerReader implements Reader {
 
-	private Scanner scanner = new Scanner(System.in);
+	private final Scanner scanner = new Scanner(System.in);
 
 	@Override
 	public String readString() {
@@ -15,5 +15,10 @@ public class ConsolerReader implements Reader {
 	@Override
 	public Double readDouble() {
 		return scanner.nextDouble();
+	}
+
+	@Override
+	public int readInt() {
+		return scanner.nextInt();
 	}
 }

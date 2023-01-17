@@ -1,4 +1,2 @@
-Operation{num1=44.0, num2=56.0, result=100.0, type='sum'}
-Operation{num1=44.0, num2=43.0, result=1.0232558139534884, type='divide'}
-Operation{num1=44.0, num2=43.0, result=1892.0, type='multiply'}
-Operation{num1=4.0, num2=4.0, result=8.0, type='sum'}
+1|12.0|43.0|sum|55.0|1673927624
+2|4324.0|43.0|sum|4367.0|1673927638
